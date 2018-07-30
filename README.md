@@ -1,1 +1,1 @@
-Just a README
+# Django Todo List
