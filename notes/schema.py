@@ -23,3 +23,5 @@ class Query(graphene.ObjectType):
             return PersonalNoteModel.objects.none()
         else:
             return PersonalNote.Model.objects.filter(user = user)
+
+schema = graphene.Schema(query=Query)
