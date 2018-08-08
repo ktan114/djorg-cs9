@@ -136,3 +136,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     )
 }
+
+GRAPHENE = {
+    'SCHEMA': 'notes.schema.schema'
+}
