@@ -8,7 +8,7 @@ class PersonalNote(DjangoObjectType):
     class Meta:
         model = PersonalNoteModel
         # Describe the data as a node in the graph
-        interface = (graphene.relay.Node,)
+        interfaces = (graphene.relay.Node,)
 
 
 class Query(graphene.ObjectType):
