@@ -16,3 +16,10 @@ class Query(graphene.ObjectType):
 
     def resolve_notes(self, info):
         """Decide which notes to return."""
+        # import pdb; pdb.set_trace()
+        user = info.context.user # Find with pdb
+
+        if user.is_anonymous:
+            return PersonalNoteModel.objects.none()
+        else:
+            return PersonalNote.Model.objects.filter(user = user)
