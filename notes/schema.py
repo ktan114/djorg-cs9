@@ -31,16 +31,17 @@ class CreatePersonalNote(graphene.Mutation):
     
     personalnote = graphene.Field(PersonalNote)
     ok = graphene.Boolean()
+    status = graphene.String()
 
     def mutate(self, info, title, content):
         user = info.context.user
 
         if user.is_anonymous:
-            return CreatePersonalNote(ok=False)
+            return CreatePersonalNote(ok=False, status="Log in")
         else:
             new_note = PersonalNoteModel(title=title, content=content, user=user)
             new_note.save()
-            return CreatePersonalNote(personalnote=new_note, ok=True)
+            return CreatePersonalNote(personalnote=new_note, ok=True, status="ok")
 
 class Mutation(graphene.ObjectType):
     create_personal_note = CreatePersonalNote.Field()
